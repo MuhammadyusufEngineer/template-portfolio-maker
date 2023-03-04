@@ -1,0 +1,1 @@
+let t={root:null,rootMargin:"-100px",threshold:.2},a=(e,o)=>{e.isIntersecting&&(e.target.classList.add("animate-avatar"),e.target.classList.replace("opacity-0","opacity-100"))},r=new IntersectionObserver(a,t);r.observe(document.querySelectorAll(".animate-avatar")[0]);

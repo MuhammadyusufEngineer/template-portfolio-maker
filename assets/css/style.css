@@ -1,0 +1,264 @@
+@import url("https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/plus-jakarta-display.min.css");
+/* tailwind essentials */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Plus jakarta display';
+    scroll-behavior: smooth;
+}
+
+body.active {
+    overflow-y: hidden;
+}
+
+.container {
+    width: 90%;
+    max-width: 1215px;
+    margin: 0 auto;
+}
+
+a {
+    cursor: pointer;
+}
+
+/* underline animation on hover */
+.hover-animation {
+    display: flex;
+    position: relative;
+}
+
+.hover-animation:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: #000;
+    transform-origin: bottom right;
+    transition: transform 0.5s ease-out;
+}
+
+nav .hover-animation::after {
+    height: 2px;
+}
+
+.hover-animation:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.hover-animation.active:after {
+    transform: scaleX(1);
+}
+
+/* Resposive menu, icon changes from burger to close*/
+.burger {
+    background-image: url("../img/burger.svg");
+}
+
+.burger.active {
+    background-image: url("../img/close.svg");
+}
+
+.menu.active {
+    top: 40px;
+    display: block;
+}
+
+.gradient-text {
+    display: inline-block;
+    background-image: linear-gradient(108deg, #b16cea 8%, #ff5e69 40%, #ff8a56 77%, #ffa84b 91%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/*  */
+.gradient-animation-bg::after {
+    background-image: linear-gradient(108deg, #b16cea 8%, #ff5e69 40%, #ff8a56 77%, #ffa84b 91%);
+    height: 5px;
+    bottom: -3px;
+}
+
+/* btn */
+.gradient-btn {
+    position: relative;
+}
+
+.btn-up {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    background: black;
+    color: white;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 130%;
+    white-space: nowrap;
+    padding: 20px 30px;
+    z-index: 1;
+    transition: .3s;
+    box-sizing: content-box;
+
+}
+
+.btn-down {
+    background: linear-gradient(108deg, #b16cea 8%, #ff5e69 40%, #ff8a56 77%, #ffa84b 91%);
+    position: relative;
+    color: transparent;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 130%;
+    white-space: nowrap;
+    padding: 20px 30px;
+    transition: .3s;
+    box-sizing: content-box;
+}
+
+/* several section titles and subtitles with same styles */
+.title {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 100%;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.subtitle {
+    margin: 20px 0 110px 0;
+    max-width: 810px;
+    line-height: 110%;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+
+.testimonial-card.active {
+    z-index: 20;
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0.35s;
+}
+
+.testimonial-card {
+    z-index: 10;
+    opacity: 0;
+    visibility: hidden;
+
+}
+
+.testimonial-avatar {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+/* FAQ accordion, icon rotates, description expands and collapses */
+.accordion-item {
+    cursor: pointer;
+}
+.accordion-item .accordion-content{
+    min-height: 0;
+}
+
+.accordion-item.active .accordion-content{
+    min-height: 100px;
+}
+
+.accordion-item .chevron {
+    transform: rotate(0deg);
+}
+.accordion-item.active .chevron {
+    transform: rotate(180deg);
+}
+
+
+/* about me section > grid items */
+.div1, .div2, .div3, .div4 {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.div1 {
+    background-image: url('../img/me-1.png');
+}
+
+.div2 {
+    background-image: url('../img/me-2.png');
+    background-position: center left;
+}
+
+.div3 {
+    background-image: url('../img/me-3.png');
+}
+
+.div4 {
+    background-image: url('../img/me-4.png');
+/* wrapper-container breakpoints */
+}
+
+@media (min-width: 768px) {
+    .container {
+        width: 80%;
+    }
+}
+
+@media (min-width: 995px) {
+    .container {
+        width: 85%;
+    }
+}
+
+.animate {
+    animation: fade .5s both;
+}
+
+.animate-avatar {
+    animation: avatar 1.2s linear 1;
+}
+
+.animate-scale {
+    animation: scale 2s both;
+    transform-origin: right;
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes avatar {
+    0% {
+        opacity: 0;
+        transform: scale(1.5);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    
+}
+
+@keyframes scale {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(100%);
+        display: none;
+    }
+    
+}
